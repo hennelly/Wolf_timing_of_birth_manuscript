@@ -33,13 +33,13 @@ confint(mixed.lmer) # confident range
 r_squared <- r.squaredGLMM(mixed.lmer)
 print(r_squared)
 
-R2m       R2c
-[1,] 0.4528089 0.9099828
+#R2m       R2c
+#[1,] 0.4528089 0.9099828
 
 
-
-# For European wolves 
-
+#######################
+# For European wolves  #
+########################
 dat <- read.csv("cleaned_wolf_parturition_withIran_Feb16_2025_transformed.csv", header=TRUE)
 
 Europe <- subset(dat, Region=="Europe")
