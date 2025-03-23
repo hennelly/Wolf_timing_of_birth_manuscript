@@ -3,6 +3,8 @@
 # GLMM analysis for wild wolves with only denID and PopulationID as random effect #
 ###################################################################################
 ###################################################################################
+# written by Lauren Hennelly
+
 library(lme4) #for linear mixed models
 library(MuMIn) #for AIC model selection
 
