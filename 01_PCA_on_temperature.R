@@ -1,11 +1,9 @@
-###############################################
-#### All scripts for the manuscript xxxx #######
-###############################################
-# written by Lauren Hennelly
-
 ###########################################
 ### PCA on temperature-related metrics ####
 ###########################################
+# written by Lauren Hennelly
+
+
 install.packages("corrr")
 library('corrr')
 install.packages("ggcorrplot")
