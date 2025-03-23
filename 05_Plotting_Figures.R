@@ -161,4 +161,38 @@ p + scale_color_brewer(palette = "RdYlBu") + scale_x_continuous(breaks = round(s
 
 ggsave("March7_FigureS1.pdf", width=10,height=6)
 
+###############################################
+### Figure S2 - Pearson's correlation plot ####
+###############################################
+library(corrplot)
+
+dat <- read.csv ("March7_PCAtemperature_colinnearity.csv", header=TRUE)
+
+ cor(dat$PC1, dat$day_change_rate_mating, method = "pearson")
+ cor(dat$Annual_Precipitation, dat$day_change_rate_mating, method = "pearson")
+ cor(dat$Annual_Precipitation, dat$PC1, method = "pearson")
+ cor(dat$Annual_Precipitation, dat$Precipitation_Seasonality, method = "pearson")
+ cor(dat$PC1, dat$Precipitation_Seasonality, method = "pearson")
+
+#check collinearity
+round(cor(dat), digits = 2)
+
+#Plot collinearity matrix
+png(filename = "mycorrplotMarch7.png", width = 14, height = 14)
+corrplot(cor(dat), method = "number", 
+   number.cex=1)
+dev.off()
+
+
+##############################################################################################
+### Figure S3 - Iberian vs Northern European wolf timing of birth for captive wolves ####
+##############################################################################################
+dat <- read.csv("March13_captivewolves_onlyEuropean.csv", header=TRUE)
+
+plot <- ggplot(dat, aes(x=Lat, y=DOY ,color=Region2)) + 
+          geom_point(size=3, aes(fill=Region2), colour="black",pch=21) + geom_smooth(method=lm) + theme_classic() +scale_color_manual(values=c("purple", "olivedrab3")) + scale_fill_manual(values=c("purple", "olivedrab3") )
+
+plot + scale_y_continuous(breaks = round(seq(min(0), max(365), by = 25),0)) + scale_x_continuous(breaks = round(seq(min(0), max(55), by = 5),0)) 
+
+ggsave("March14_Supplemental_European_vs_Iberian.pdf", width=7,height=5)
 
