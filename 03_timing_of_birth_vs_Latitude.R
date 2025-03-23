@@ -38,6 +38,46 @@ R2m       R2c
 
 
 
+# For European wolves 
+
+dat <- read.csv("cleaned_wolf_parturition_withIran_Feb16_2025_transformed.csv", header=TRUE)
+
+Europe <- subset(dat, Region=="Europe")
+
+#Use DenID for random effect
+
+mixed.lmer <- lmer(DOY ~ Lat + (1|DenID) , data = Europe)
+summary(mixed.lmer)
+
+#Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+#Formula: DOY ~ Lat + (1 | DenID)
+#   Data: Europe
+
+#REML criterion at convergence: 425.6
+
+#Scaled residuals: 
+#     Min       1Q   Median       3Q      Max 
+#-1.97486 -0.37301 -0.01575  0.44881  1.32218 
+
+#Random effects:
+# Groups   Name        Variance Std.Dev.
+# DenID    (Intercept) 39.60    6.293   
+# Residual             15.04    3.878   
+#Number of obs: 63, groups:  DenID, 58
+
+#Fixed effects:
+#            Estimate Std. Error       df t value Pr(>|t|)    
+#(Intercept) 241.7267     6.0431  58.1701   40.00  < 2e-16 ***
+#Lat          -0.9611     0.1159  58.1440   -8.29 1.97e-11 ***
+#---
+#Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+#Correlation of Fixed Effects:
+#    (Intr)
+#Lat -0.987
+#         1.7576     0.1193   14.73
+
+
 #####################################################
 #####################################################
 ## Latitude vs. timing of birth for captive wolves ##
