@@ -3,7 +3,6 @@
 # Wild wolves: perform pairwise t-tests with Bonferroni's correction #
 ######################################################################
 ######################################################################
-# written by Lauren Hennelly
 
 #we assessed whether wolf populations (North American, Iberian, Indian, SouthwestAsian, NorthernEuropean) were statistically different from each other in their timing of birth 
 
