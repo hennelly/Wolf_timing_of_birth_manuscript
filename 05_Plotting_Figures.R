@@ -3,7 +3,6 @@
 ## Code for plotting figures ##
 ###############################
 ###############################
-#written by Lauren Hennelly
 
 ############################################################
 # Figure 1A - Geographic map of wild wolf timing of births #
@@ -64,6 +63,26 @@ plot3 <- plot + geom_smooth(aes(group = "Region"), method="lm", se=FALSE, col="b
 plot3 + scale_y_continuous(breaks = round(seq(min(10), max(90), by = 10),0)) + scale_x_continuous(breaks = round(seq(min(0), max(250), by = 25),0)) 
 
 ggsave("March8_Figure1c.pdf", width=7,height=4)
+
+
+##########################################################################
+### Figure 2 - Daylength vs mating date for wild wolves  ####
+##########################################################################
+
+daychange <- read.csv("Figure2.csv")
+
+daychange$Date <- as.Date(daychange$Date, format = "%m/%d/%y")
+daychange$Lat <- factor(daychange$Lat)
+
+p <- ggplot(daychange) +
+  geom_line(aes(x = Date, y = daylength, color = Lat), size=0.5)+
+  scale_colour_discrete()+
+  geom_point(aes(x = Date, y = mday_daylength, fill = Population), pch=21, size=3)  + scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y")  + theme(axis.text.x=element_text(angle=60, hjust=1))
+p + theme_classic() + scale_color_manual(values=c("gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray", "gray")) +  scale_fill_manual(values=c("olivedrab3", "olivedrab3", "forestgreen", "orangered", "#56B4E9", "gray", "darkgoldenrod1", "gray", "gray", "chocolate1", "chocolate2", "sienna2", "sienna1", "tan2", "tan1", "sandybrown", "peachpuff1", "yellow", "lightgoldenrod2", "lightgoldenrod1", "wheat2", "wheat1", "slategray1", "skyblue", "skyblue1", "deepskyblue", "deepskyblue1", "deepskyblue2", "dodgerblue", "dodgerblue1", "dodgerblue2", "dodgerblue3", "dodgerblue4"))
+
+ggsave("March24_Figure2.pdf", width=12,height=7)
+
+
 
 ##########################################################################
 ### Figure 3A - Boxplot of captive wolf  timing of birth by latitude  ####
