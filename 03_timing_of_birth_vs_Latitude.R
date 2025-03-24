@@ -3,7 +3,6 @@
 ## Latitude vs. timing of birth for wild wolves ##
 ##################################################
 ##################################################
-# written by Lauren Hennelly
 
 library(lme4)
 library(MuMIn)
