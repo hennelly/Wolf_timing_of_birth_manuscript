@@ -1,7 +1,6 @@
 ###########################################
 ### PCA on temperature-related metrics ####
 ###########################################
-# written by Lauren Hennelly
 
 
 install.packages("corrr")
